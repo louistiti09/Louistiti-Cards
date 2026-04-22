@@ -23,7 +23,9 @@ async function getUser() {
 window.onload = async () => {
     const user = await getUser();
     if (user) {
-        document.getElementById("account").innerHTML = "dd";
+        document.getElementById("account").innerHTML = `
+            ${user.username}<img src='${user.avatar}'>
+        `;
         console.log("Connecté :", user);
     }
 };
