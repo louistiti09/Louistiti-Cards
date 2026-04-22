@@ -34,10 +34,14 @@ window.onload = async () => {
                 <img id='logout' src='images/LogOut.png'>
             </div> 
         `;
-        console.log("Connecté :", user);
     }
 };
 
-function logout() {
-    console.log("LOG OUT");
+async function logout() {
+    const { error } = await client.auth.signOut();
+    if (error) {
+        console.error("Logout error:", error.message);
+        return;
+    }
+    window.location.reload();
 }
