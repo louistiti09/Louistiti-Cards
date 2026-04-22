@@ -81,7 +81,34 @@ nav {
 }
 
 #pfp {
+    width: 70px;
+    height: 70px;
+}
+
+#avatar {
     border-radius: 50%;
+    height: 70px;
+    opacity: 1;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+#pfp:hover #avatar{
+    filter: grayscale(80%) blur(1px);
+    opacity: 0.6;
+}
+
+#logout {
+    position: absolute;
+    height: 70px;
+    top: 5px;
+    right: 3px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#pfp:hover #logout{
+    opacity: 1;
+    cursor: pointer;
 }
 
 h1 {

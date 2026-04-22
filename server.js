@@ -25,8 +25,19 @@ window.onload = async () => {
     //const user = {id: 'fd0deae4-e85d-49f6-9982-f5375ff6ed0b', username: 'zouylstiti', avatar: 'images/Logo.png'};
     if (user) {
         document.getElementById("account").innerHTML = `
-            <div id="credits"><strong>${user.username}</strong><br>100 Crédits</div><img id='pfp' src='${user.avatar}' height='70px'>
+            <div id="credits">
+                <strong>${user.username}</strong>
+                <br>100 Crédits
+            </div>
+            <div id='pfp' onclick="logout()">
+                <img id='avatar' src='${user.avatar}'>
+                <img id='logout' src='images/LogOut.png'>
+            </div> 
         `;
         console.log("Connecté :", user);
     }
 };
+
+function logout() {
+    console.log("LOG OUT");
+}
