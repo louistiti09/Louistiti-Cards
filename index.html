@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Louistiti Cards - Accueil</title>
+        <link rel="icon" href="images/Logo.png" type="image/png">
         <link rel="stylesheet" href="style.css">
 
         <!--Font loader-->
@@ -11,24 +12,37 @@
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     </head>
     <body>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="server.js"></script>
         <nav>
-            <a href="index.html"><img src="images/LogoBW.png" height="70px"></a>
-            <h2>Louistiti Cards</h2>
+            <div id="site">
+                <a href="index.html"><img src="images/LogoBW.png" height="70px"></a>
+                <h2>Louistiti Cards</h2>
+            </div>
+            
             <div id="navbar">
-                
+                <a href="revente.html"><button>Revendre</button></a>
+                <a href="classeur.html"><button>Classeur</button></a>
+            </div>
+
+            <div id="account">
+                <button onclick="login()">Login</button>
             </div>
         </nav>
         <div id="titre">
             <h1>Louistiti Cards</h1>
             <h3>Stock de cartes <em>Yu-Gi-Oh!</em> en ligne</h3>
         </div>
-        <br>
         <div id="desc">
             <p>Bienvenue sur notre site internet !</p>
-            <p>Nous proposons la vente de cartes Yu-Gi-Oh!, adaptées aussi bien aux collectionneurs qu’aux joueurs passionnés.</p>
+            <p>Nous proposons la vente de cartes Yu-Gi-Oh! aussi bien pour les collectionneurs que pour les joueurs passionnés.</p>
             <p>A travers ce site, il est également possible de faire reprendre vos cartes en toute simplicité : vous pouvez ainsi vendre celles dont vous n’avez plus besoin, tout en bénéficiant d’une estimation juste et rapide à l'aide de Cardmarket.</p>
         </div>
-        <br>
-        prout
+        <hr>
+
+        <div id="bottom">
+            <a href="https://www.cardmarket.com/fr/YuGiOh/Users/LOUISTITI"><img src="images/Cardmarket.png" height="50px"></a>
+            <a href="https://discord.gg/ct97JAZdRN"><img src="images/Discord.png" height="50px"></a>
+        </div>
     </body>
 </html>
