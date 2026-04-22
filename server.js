@@ -51,10 +51,3 @@ window.onload = async () => {
         `;
     }
 };
-
-client.auth.onAuthStateChange((event, session) => {
-    if (event === "SIGNED_IN") {
-        window.history.replaceState({}, document.title, window.location.pathname);
-        window.location.reload();
-    }
-});
