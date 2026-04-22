@@ -23,8 +23,7 @@ async function getUser() {
 window.onload = async () => {
     const user = await getUser();
     if (user) {
+        document.getElementById("account").innerHTML = "dd";
         console.log("Connecté :", user);
-    } else {
-        console.log("Pas connecté");
     }
 };
