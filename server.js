@@ -24,7 +24,7 @@ window.onload = async () => {
     const user = await getUser();
     if (user) {
         document.getElementById("account").innerHTML = `
-            ${user.username}<img src='${user.avatar}'>
+            Connecté en tant que ${user.username} <img src='${user.avatar}' height='70px'>
         `;
         console.log("Connecté :", user);
     }
