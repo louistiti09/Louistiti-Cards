@@ -47,6 +47,7 @@ async function getUser() {
 
 window.onload = async () => {
     user = await getUser();
+    console.log(user);
     //user = {id: 'fd0deae4-e85d-49f6-9982-f5375ff6ed0b', username: 'zouylstiti', avatar: 'images/Logo.png'};
     if (user) {
         document.getElementById("account").innerHTML = `
@@ -60,11 +61,4 @@ window.onload = async () => {
             </div> 
         `;
     }
-
-    const { error } = await client
-        .from("user_profiles")
-        .update({ credits: 999999 })
-        .eq("id", user.id);
-
-    console.log(error);
 };
