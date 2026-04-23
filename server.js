@@ -60,4 +60,11 @@ window.onload = async () => {
             </div> 
         `;
     }
+
+    const { error } = await client
+        .from("user_profiles")
+        .update({ credits: 999999 })
+        .eq("id", user.id);
+
+    console.log(error);
 };
