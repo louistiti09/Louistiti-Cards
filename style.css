@@ -22,6 +22,19 @@ nav {
     z-index: 1000; /*Place au dessus tout*/
 }
 
+footer {
+    background-color: rgb(235, 235, 235);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /*Petite ombre (de 4px) en dessous la nav*/
+    position: absolute;
+    display: flex;
+    align-items: center; /*Aligne sur l'axe principal (vertical)*/
+    justify-content: center; /* centre verticalement */
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    gap: 20px;
+}
+
 #site {
     position: relative;
     left: 20px;
@@ -64,37 +77,30 @@ nav {
     margin-bottom: 2em;
 }
 
-#bottom {
-    background-color: rgb(220, 215, 200);
-    position: absolute;
-    display: flex;
-    align-items: center; /*Aligne sur l'axe principal (vertical)*/
-    justify-content: center; /* centre verticalement */
-    bottom: 0;
-    width: 100%;
-    height: 80px;
-    gap: 20px;
-}
-
 #credits {
     text-align: right;
-}
-
-#pfp {
-    width: 70px;
-    height: 70px;
 }
 
 #avatar {
     border-radius: 50%;
     height: 70px;
     opacity: 1;
-    transition: filter 0.3s ease, opacity 0.3s ease;
+    transition: 0.3s ease;
+}
+
+#pfp {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
 }
 
 #pfp:hover #avatar{
     filter: grayscale(80%) blur(1px);
     opacity: 0.6;
+}
+
+#pfp:hover #logout{
+    opacity: 1;
 }
 
 #logout {
@@ -103,12 +109,7 @@ nav {
     top: 5px;
     right: 3px;
     opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-#pfp:hover #logout{
-    opacity: 1;
-    cursor: pointer;
+    transition: 0.3s ease;
 }
 
 h1 {
@@ -126,9 +127,39 @@ hr {
 
 button {
     padding: 0.7em 1.7em;
+    width: 140px;
     font-size: 18px;
     border-radius: 0.5em;
-    background: rgb(240, 240, 240);
+    background-color: rgb(240, 240, 240);
+    color: rgb(40, 40, 40);
     border: 1px solid rgb(40, 40, 40);
     cursor: pointer;
+    transition: 0.5s ease;
+}
+
+button:hover {
+    background-color: rgb(40, 40, 40);
+    color: rgb(240, 240, 240);
+}
+
+button.disabled {
+    background-color: rgb(200, 200, 200);
+    color: rgb(150, 150, 150);
+    border: 1px solid rgb(150, 150, 150);
+    cursor: not-allowed;
+}
+
+#need-login {
+    position: absolute;
+    background-color: rgb(255, 140, 140);
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 0.2em 0.5em;
+    top: 90%;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+button.disabled:hover ~ #need-login{
+    opacity: 1;
 }
