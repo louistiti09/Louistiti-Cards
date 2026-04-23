@@ -7,10 +7,7 @@ var user = null;
 
 async function login() {
     const { error } = await client.auth.signInWithOAuth({
-        provider: "discord",
-        //options: {
-        //    redirectTo: window.location.origin
-        //}
+        provider: "discord"
     });
     if (error) console.error("Login error:", error.message);
 }
@@ -28,10 +25,17 @@ async function logout() {
 async function getUser() {
     const { data } = await client.auth.getUser();
     if (!data.user) return null;
+    const { data2 } = await client
+        .from("user_profiles")
+        .select("credits")
+        .eq("id", data.user.id)
+        .single();
+    if (!data2.credits) return null;
     return {
         id: data.user.id,
         username: data.user.user_metadata.full_name,
-        avatar: data.user.user_metadata.avatar_url
+        avatar: data.user.user_metadata.avatar_url,
+        credits: data2.credits
     };
 }
 
@@ -42,7 +46,7 @@ window.onload = async () => {
         document.getElementById("account").innerHTML = `
             <div id="credits">
                 <strong>${user.username}</strong>
-                <br>100 Crédits
+                <br>${user.credits} Crédits
             </div>
             <div id='pfp' onclick="logout()">
                 <img id='avatar' src='${user.avatar}'>
