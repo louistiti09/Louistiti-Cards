@@ -30,6 +30,7 @@ async function getUser() {
         .select("credits")
         .eq("id", data.user.id)
         .single();
+    console.log(data2)
     if (!data2.credits) return null;
     return {
         id: data.user.id,
