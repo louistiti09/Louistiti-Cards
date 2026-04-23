@@ -95,5 +95,4 @@ window.onload = async () => {
             <div id="need-login">Veuillez vous connecter.</div>
         `;
     }
-    $(".flipbook").turn();
 };

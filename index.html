@@ -2,8 +2,10 @@
 <html>
     <head>
         <title>Louistiti Cards - Accueil</title>
+        <meta charset="UTF-8">
         <link rel="icon" href="images/Logo.png" type="image/png">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/accueil.css">
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -12,11 +14,25 @@
             <h1>Louistiti Cards</h1>
             <h3>Stock de cartes <em>Yu-Gi-Oh!</em> en ligne</h3>
         </div>
+        <div id="stats">
+            <div class="stat" id="cartes-stock">
+                <h2>1000+</h2>
+                <p>Cartes en stock</p>
+            </div>
+            <div class="stat" id="cartes-vendues">
+                <h2>500+</h2>
+                <p>Cartes vendues</p>
+            </div>
+            <div class="stat" id="cartes-reprises">
+                <h2>200+</h2>
+                <p>Cartes reprises</p>
+            </div>
+        </div>
+        <hr>
         <div id="desc">
             <p>Bienvenue sur notre site internet !</p>
             <p>Nous proposons la vente de cartes Yu-Gi-Oh! aussi bien pour les collectionneurs que pour les joueurs passionnés.</p>
             <p>A travers ce site, il est également possible de faire reprendre vos cartes en toute simplicité : vous pouvez ainsi vendre celles dont vous n’avez plus besoin, tout en bénéficiant d’une estimation juste et rapide à l'aide de Cardmarket.</p>
         </div>
-        <hr>
     </body>
 </html>

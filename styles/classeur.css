@@ -1,0 +1,35 @@
+#screen {
+    display: flex;
+    padding: 0 20px;
+    height: 80vh;
+    gap: 10px;
+
+}
+
+#recherche {
+    background-color: rgb(40, 40, 40);
+    color: rgb(240, 240, 240);
+    width: 70%;
+    border-radius: 20px;
+}
+
+#panier {
+    width: 30%;
+    border: 2px solid rgb(40, 40, 40);
+    border-radius: 20px;
+}
+
+.card {
+    position: relative;
+    height: 100%;
+    cursor: pointer;
+}
+
+.lang {
+    position: relative;
+    width: 30px;
+    height: 20px;
+    border: 1px solid rgb(40, 40, 40);
+    right: 15px;
+    pointer-events: none;
+}

@@ -22,13 +22,12 @@ nav {
     gap: 10px; /*Met un gap entre chaque child*/
     width: 100%;
     height: 80px;
-    /*z-index: 1000; /*Place au dessus tout*/
 }
 
 footer {
     background-color: rgb(235, 235, 235);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /*Petite ombre (de 4px) en dessous la nav*/
-    position: fixed;
+    position: relative;
     display: flex;
     align-items: center; /*Aligne sur l'axe principal (vertical)*/
     justify-content: center; /* centre verticalement */
@@ -64,22 +63,6 @@ footer {
     gap: 10px;
 }
 
-#titre {
-    background-color: rgb(40, 40, 40);
-    color: rgb(240, 240, 240);
-    display: flex;
-    flex-direction: column; /* empile verticalement */
-    justify-content: center; /* centre verticalement */
-    height: 50vh;
-    font-family: "Quicksand", sans-serif;
-}
-
-#desc {
-    padding: 0 25%;
-    margin-top: 2em;
-    margin-bottom: 2em;
-}
-
 #credits {
     text-align: right;
 }
@@ -113,10 +96,6 @@ footer {
     right: 3px;
     opacity: 0;
     transition: 0.3s ease;
-}
-
-h1 {
-    font-size: 4em;
 }
 
 hr {
