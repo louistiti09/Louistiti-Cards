@@ -25,18 +25,23 @@ async function logout() {
 async function getUser() {
     const { data } = await client.auth.getUser();
     if (!data.user) return null;
-    const { data2 } = await client
+
+    const { data: profile, error } = await client
         .from("user_profiles")
         .select("credits")
         .eq("id", data.user.id)
         .single();
-    console.log(data2)
-    if (!data2.credits) return null;
+
+    if (error) {
+        console.error(error);
+        return null;
+    }
+
     return {
         id: data.user.id,
         username: data.user.user_metadata.full_name,
         avatar: data.user.user_metadata.avatar_url,
-        credits: data2.credits
+        credits: profile?.credits ?? 0
     };
 }
 
