@@ -26,7 +26,7 @@ nav {
 
 footer {
     background-color: rgb(235, 235, 235);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /*Petite ombre (de 4px) en dessous la nav*/
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.15); /*Petite ombre (de 4px) en dessous la nav*/
     position: relative;
     display: flex;
     align-items: center; /*Aligne sur l'axe principal (vertical)*/

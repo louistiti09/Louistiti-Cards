@@ -1,0 +1,106 @@
+body {
+    overflow-x: hidden;
+}
+
+progress {
+    width: 50%;
+    height: 25px;
+    border-radius: 20px;
+    overflow: hidden;
+    appearance: none;
+}
+
+/* Fond (la "piste") */
+progress::-webkit-progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 20px;
+}
+
+/* Partie remplie */
+progress::-webkit-progress-value {
+    background: linear-gradient(90deg, #11c556, #68e258);
+    border-radius: 20px;
+    transition: width 2s ease;
+}
+
+#confiance-bonus ul {
+    margin-left: 25%;
+    width: 75%;
+    text-align: left;
+}
+
+.petites-lignes {
+    margin-left: 2%;
+    display: flex;
+    justify-content: space-around; /* espace égal entre les éléments */
+    text-align: left;
+    font-size: 90%;
+}
+
+.petites-lignes div {
+    width: 18%;
+}
+
+#ticket {
+    background-color: rgb(40, 40, 40);
+    color: rgb(240, 240, 240);
+    width: 70%;
+    min-height: 50vh;
+    border-radius: 20px;
+    place-self: center;
+}
+
+#ticket hr {
+    background-color: rgb(240, 240, 240);
+}
+
+#ticket p {
+    padding: 0 20px;
+    text-align: left;
+}
+
+.ouvert {
+    color: rgb(120, 245, 120);
+    font-weight: bold;
+}
+.en-attente {
+    color: rgb(245, 245, 120);
+    font-weight: bold;
+}
+.validé {
+    color: rgb(120, 245, 120);
+    font-weight: bold;
+}
+.refusé {
+    color: rgb(245, 120, 120);
+    font-weight: bold;
+}
+.credits {
+    color: rgb(120, 245, 225);
+    font-weight: bold;
+}
+.date {
+    color: rgba(255, 255, 255, 0.3);
+    font-style: italic;
+}
+.content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: rgba(255, 255, 255, 0.01);
+    margin-right: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.content:hover {
+    height: 180px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.card_img {
+    height: 100%;
+    border-radius: 2%;
+}
+.flag {
+    height: 10px;
+}

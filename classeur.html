@@ -4,12 +4,15 @@
         <title>Louistiti Cards - Classeur</title>
         <meta charset="UTF-8">
         <link rel="icon" href="images/Logo.png" type="image/png">
-        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="styles/classeur.css">
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-        <script src="server.js"></script>
+        <script type="module">
+            import { setup } from "./server.js";
+            setup();
+        </script>
         <h1>Classeur</h1>
         <div id="screen">
             <div id="recherche">
@@ -19,7 +22,5 @@
                 <h2>Panier</h2>
             </div>
         </div>
-        <!--<img class="card" src="https://images.ygoprodeck.com/images/cards/1861629.jpg">
-        <img class="lang" src="images/flags/FR.webp">-->
     </body>
 </html>

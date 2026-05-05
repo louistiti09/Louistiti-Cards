@@ -4,27 +4,59 @@
         <title>Louistiti Cards - Accueil</title>
         <meta charset="UTF-8">
         <link rel="icon" href="images/Logo.png" type="image/png">
-        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="styles/accueil.css">
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-        <script src="server.js"></script>
+        <script type="module">
+            import { client, setup } from "./server.js";
+            setup();
+            //Stock
+            const { count: stock, error } = await client
+                .from("cartes")
+                .select(`
+                    id,
+                    tickets_vente!inner (
+                        statut
+                    )
+                `, { count: "exact", head: true })
+                .eq("tickets_vente.statut", "Fermé")
+                .is("id_ticket_vente", null);
+            document.getElementById("cartes-stock").querySelector("h2").textContent = stock;
+            //Ventes
+            const { count: ventes } = await client
+                .from("cartes")
+                .select("*", { count: "exact", head: true })
+                .not("id_ticket_vente", "is", null);
+            document.getElementById("cartes-vendues").querySelector("h2").textContent = ventes;
+            //Reprises
+            const { count: reprises } = await client
+                .from("cartes")
+                .select(`
+                    id,
+                    tickets_vente!inner (
+                        statut
+                    )
+                `, { count: "exact", head: true })
+                .eq("tickets_vente.statut", "Fermé");
+            document.getElementById("cartes-reprises").querySelector("h2").textContent = reprises;
+        </script>
         <div id="titre">
             <h1>Louistiti Cards</h1>
             <h3>Stock de cartes <em>Yu-Gi-Oh!</em> en ligne</h3>
         </div>
         <div id="stats">
             <div class="stat" id="cartes-stock">
-                <h2>1000+</h2>
+                <h2>???</h2>
                 <p>Cartes en stock</p>
             </div>
             <div class="stat" id="cartes-vendues">
-                <h2>500+</h2>
+                <h2>???</h2>
                 <p>Cartes vendues</p>
             </div>
             <div class="stat" id="cartes-reprises">
-                <h2>200+</h2>
+                <h2>???</h2>
                 <p>Cartes reprises</p>
             </div>
         </div>
