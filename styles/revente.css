@@ -47,7 +47,7 @@ progress::-webkit-progress-value {
     width: 70%;
     min-height: 50vh;
     border-radius: 20px;
-    place-self: center;
+    margin: 0 auto;
 }
 
 #ticket hr {

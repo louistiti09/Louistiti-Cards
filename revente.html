@@ -44,7 +44,6 @@
                         cardsHTML += `<br><li class="content"><strong>Top Loaders</strong><em>x${ticket.toploaders}</em><span class="credits">${ticket.toploaders*50}cr</span></li>`
                     }
                     cardsHTML += '</ul>';
-                    console.log(cardsHTML);
                     div.innerHTML = `
                         <h2>Ticket n°${ticket.id_ticket}</h2>
                         <p><strong>Statut :</strong> <span class="${ticket.statut.toLowerCase().replace(/\n/g,"-")}">${ticket.statut.toUpperCase()}</span></p>
