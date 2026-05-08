@@ -1,0 +1,60 @@
+.ticket {
+    background-color: rgb(40, 40, 40);
+    color: rgb(240, 240, 240);
+    width: 70%;
+    min-height: 50vh;
+    border-radius: 20px;
+    margin: 0 auto;
+}
+
+.ticket hr {
+    background-color: rgb(240, 240, 240);
+}
+
+.ticket p {
+    padding: 0 20px;
+    text-align: left;
+}
+
+.ouvert,
+.validé {
+    color: rgb(120, 245, 120);
+    font-weight: bold;
+}
+.en-attente {
+    color: rgb(245, 245, 120);
+    font-weight: bold;
+}
+.annulé,
+.refusé {
+    color: rgb(245, 120, 120);
+    font-weight: bold;
+}
+.credits {
+    color: rgb(120, 245, 225);
+    font-weight: bold;
+}
+.vider_cache,
+.date {
+    color: rgba(255, 255, 255, 0.3);
+    font-style: italic;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: rgba(255, 255, 255, 0.01);
+    margin-right: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.content:hover {
+    height: 180px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.flag {
+    height: 10px;
+}

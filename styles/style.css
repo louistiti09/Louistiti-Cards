@@ -53,6 +53,10 @@ footer {
     gap: 10px;
 }
 
+#navbar button {
+    width: 140px;
+}
+
 #account {
     position: relative;
     right: 20px;
@@ -109,7 +113,6 @@ hr {
 
 button {
     padding: 0.7em 1.7em;
-    width: 140px;
     font-size: 18px;
     border-radius: 0.5em;
     background-color: rgb(240, 240, 240);

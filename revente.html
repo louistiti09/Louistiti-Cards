@@ -4,87 +4,19 @@
         <title>Louistiti Cards - Revente</title>
         <meta charset="UTF-8">
         <link rel="icon" href="images/Logo.png" type="image/png">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="styles/style.css">
         <link rel="stylesheet" href="styles/revente.css">
+        <link rel="stylesheet" href="styles/ticket.css">
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-        <script type="module">
-            import { client, setup, getUser, connected } from "./server.js";
-            await setup();
-            if (connected) {
-                const { id, confiance } = await getUser();
-                //Ticket
-                const { data } = await client
-                    .from("tickets_vente")
-                    .select("*")
-                    .eq("id_vendeur", id)
-                    .neq("statut", "Fermé");
-                const div = document.getElementById("jsticket");
-                if (data.length > 0) {
-                    const ticket = data[0];
-                    div.id = "ticket";
-                    const { data:cartes } = await client
-                        .from("cartes")
-                        .select("*")
-                        .eq("id_ticket_achat", ticket.id_ticket);
-                    var cardsHTML = '<ul>';
-                    cartes.forEach(c => {
-                        cardsHTML += `
-                            <li class="content">
-                                <img class="card_img" id="${c.id}i">
-                                <img class="flag" src="images/flags/${c.langue}.webp">
-                                <strong>${c.nom}</strong>
-                                <em>${[c.code, c.rarete, c.etat].join(' | ')}</em>
-                                ${c.prix != null ? `<span class="credits">${c.prix}cr</span>` : ''}
-                            </li>
-                        `;
-                    });
-                    if (ticket.toploaders > 0) {
-                        cardsHTML += `<br><li class="content"><strong>Top Loaders</strong><em>x${ticket.toploaders}</em><span class="credits">${ticket.toploaders*50}cr</span></li>`
-                    }
-                    cardsHTML += '</ul>';
-                    div.innerHTML = `
-                        <h2>Ticket n°${ticket.id_ticket}</h2>
-                        <p><strong>Statut :</strong> <span class="${ticket.statut.toLowerCase().replace(/\n/g,"-")}">${ticket.statut.toUpperCase()}</span></p>
-                        <p><strong>Offre :</strong> ${ticket.statut == "Fermé" ? `<span class="credits">${ticket.valeur}cr</span>` : `???`}</p>
-                        <hr><p><strong>Contenu :</strong><br>${cardsHTML}</p>
-                        <small class="date">${new Date(ticket.created_at).toLocaleString()}</small>
-                    `;
-                    cartes.forEach(async c => {
-                        const response = await fetch(`https://db.ygoprodeck.com/api/v7/cardinfo.php?name=${encodeURIComponent(c.nom)}`);
-                        const json = await response.json();
-                        const {id} = json.data[0];
-                        document.getElementById(c.id+'i').setAttribute("src",`https://images.ygoprodeck.com/images/cards/${id}.jpg`);
-                    });
-                } else {
-                    
-                }
-
-                //Confiance
-                const progress = document.querySelector("progress");
-                progress.value = confiance;
-                document.getElementById("confiance-value").textContent = confiance;
-                if (confiance < 0) {
-                    document.getElementById("confiance-bonus").innerHTML = "❌ Interdit de vente !";
-                } else {
-                    document.getElementById("confiance-bonus").innerHTML = `
-                        <ul>
-                            <li>✅ Système classique.</li>
-                            <li>${confiance >= 5 ? '✅' : '❌'} 2 Tickets par semaine. <small>(5pts)</small></li>
-                            <li>${confiance >= 10 ? '✅' : '❌'} Vente validée sans vérification en présentiel.  <small>(10pts)</small></li>
-                            <li>${confiance == 20 ? '✅' : '❌'} Les frais de vente au delà 5000 crédits restent à 10%.  <small>(20pts)</small></li>
-                        </ul>
-                    `;
-                }
-            } else {
-                window.location.href = "index.html";// Redirige vers l'accueil si non connecté
-            }
-        </script>
+        <script src="scripts/revente.js" type="module"></script>
         <h1>Revente</h1>
         <div id="jsticket"></div>
-        <p>Avant d'ouvrir un ticket, assurez-vous d'avoir bien pris connaissance des <a href="#regles-revente">règles de revente</a>.</p>
-
+        <p>
+            Avant d'ouvrir un ticket, assurez-vous d'avoir bien pris connaissance des <a href="#regles-revente">règles de revente</a>.
+        </p>
+        <a href="historique_revente.html"><button>Consulter vos anciens tickets</button></a>
         <hr>
         <h2>Niveau de vendeur : <span id="confiance-value"></span></h2>
         <progress value="0" max="20"></progress>
@@ -128,18 +60,10 @@
                 </ul>
             </div>
             <div>
-                <h4>4. Validation finale du ticket</h4>
+                <h4>4. Fermeture du ticket</h4>
                 Une fois vérifié, le ticket passe en "VALIDÉ" :
                 <ul>
                     <li>Les éventuelles corrections sont appliquées</li>
-                    <li>Vous devez accepter la fermeture du ticket</li>
-                    <li>Vous pouvez toujours refuser l'offre si elle ne vous convient pas</li>
-                </ul>
-            </div>
-            <div>
-                <h4>5. Finalisation de la vente</h4>
-                Lorsque le ticket est "FERMÉ" :
-                <ul>
                     <li>Vos cartes sont ajoutées à la boutique</li>
                     <li>Vous recevez des <bold>crédits</bold> correspondant à la vente, avec frais appliqués :</li>
                     <ul>
